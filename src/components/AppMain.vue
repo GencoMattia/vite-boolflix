@@ -59,6 +59,17 @@ export default {
                         // always executed
                 });  
             }
+        },
+
+        getOneToFiveVote(voteAverage) {
+            const parsedVote = parseFloat(voteAverage, 10);
+            if (!isNaN(parsedVote)) {
+                const roundedVote = Math.floor(parsedVote / 2);
+                return roundedVote;
+            } else {
+                console.warn("Il voto fornito non è un numero:", voteAverage);
+                return "Nessun voto disponibile";
+            }
         }
     }
 };
@@ -101,6 +112,9 @@ export default {
                             <li>
                                 {{ `Voto: ${movie.vote_average}` }}
                             </li>
+                            <li>
+                                {{ getOneToFiveVote(movie.vote_average) }}
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -131,15 +145,15 @@ export default {
                             <li>
                                 {{ `Voto: ${series.vote_average}` }}
                             </li>
+                            <li>
+                                {{ getOneToFiveVote(series.vote_average) }}
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </section>
         </div>
     </main>
-    <h1>
-        Io sono un Main!
-    </h1>
 </template>
 
 <style scoped>
