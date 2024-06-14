@@ -23,10 +23,12 @@ export default {
                     // language: it-IT,
                     }
                     })
-                    .then(function (response) {
+                    .then((response) => {
                         console.log(response.data.results);
+                        this.searchedMovieList = response.data.results;
+                        console.log(`Lista Film = ${this.searchedMovieList}`)
                     })
-                    .catch(function (error) {
+                    .catch((error) => {
                         console.log(error);
                     })
                     .finally(function () {
@@ -49,8 +51,8 @@ export default {
             </section>
             <section class="searched-movie-wrapper">
                 <ul class="searched-movie-list">
-                    <li>
-                        Titolo
+                    <li v-for="movie in searchedMovieList">
+                        {{ movie.original_title }}
                     </li>
                 </ul>
             </section>
