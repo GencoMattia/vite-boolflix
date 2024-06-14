@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios';
-import "/node_modules/flag-icons/css/flag-icons.min.css";
-
+import "../../node_modules/flag-icons/css/flag-icons.min.css";
+// /node_modules/flag-icons/css/flag-icons.min.css
 export default {
     data() {
         return {
@@ -64,7 +64,8 @@ export default {
                                 {{ `Titolo Originale: ${movie.original_title}` }}
                             </li>
                             <li>
-                                {{ `Lingua: ${movie.original_language}` }}
+                                <span v-if="movie.original_language === 'en'" :class="`fi fi-gb fis`"></span>
+                                <span v-else :class="`fi fi-${movie.original_language.toLowerCase()} fis`"></span>
                             </li>
                             <li>
                                 {{ `Voto: ${movie.vote_average}` }}
