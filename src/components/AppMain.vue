@@ -9,6 +9,10 @@ export default {
 
             ],
 
+            searchedSeriesList: [
+
+            ],
+
             searchedValue: "",
         };
     },
@@ -34,6 +38,25 @@ export default {
                     })
                     .finally(function () {
                         // always executed
+                }); 
+                
+                axios.get('https://api.themoviedb.org/3/search/tv', {
+                    params: {
+                    api_key: 'fee27ab56233f46df7aed04f261571a8',
+                    query: this.searchedValue,
+                    // language: it-IT,
+                    }
+                    })
+                    .then((response) => {
+                        console.log(response.data.results);
+                        this.searchedSeriesList = response.data.results;
+                        console.log(`Lista Serie TV = ${this.searchedMovieList}`)
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+                    .finally(function () {
+                        // always executed
                 });  
             }
         }
@@ -52,7 +75,12 @@ export default {
             </section>
             <section class="searched-movie-wrapper">
                 <ul class="searched-movie-list">
-                    <li v-for="movie in searchedMovieList">
+                    <li>
+                        <h1>
+                            Films
+                        </h1>
+                    </li>
+                    <li v-for="movie in searchedMovieList" :key="movie.id">
                         <h2>
                             {{ movie.original_title }}
                         </h2>
@@ -64,11 +92,38 @@ export default {
                                 {{ `Titolo Originale: ${movie.original_title}` }}
                             </li>
                             <li>
-                                <span v-if="movie.original_language === 'en'" :class="`fi fi-gb fis`"></span>
-                                <span v-else :class="`fi fi-${movie.original_language.toLowerCase()} fis`"></span>
+                                <span v-if="movie.original_language === 'en'" :class="`fi fi-gb`"></span>
+                                <span v-else :class="`fi fi-${movie.original_language.toLowerCase()}`"></span>
                             </li>
                             <li>
                                 {{ `Voto: ${movie.vote_average}` }}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="searched-series-list">
+                    <li>
+                        <h1>
+                            Series
+                        </h1>
+                    </li>
+                    <li v-for="series in searchedSeriesList" :key="series.id">
+                        <h2>
+                            {{ series.original_name }}
+                        </h2>
+                        <ul>
+                            <li>
+                                {{ `Titolo: ${series.name}` }}
+                            </li>
+                            <li>
+                                {{ `Titolo Originale: ${series.original_name}` }}
+                            </li>
+                            <li>
+                                <span v-if="series.original_language === 'en'" :class="`fi fi-gb`"></span>
+                                <span v-else :class="`fi fi-${series.original_language.toLowerCase()}`"></span>
+                            </li>
+                            <li>
+                                {{ `Voto: ${series.vote_average}` }}
                             </li>
                         </ul>
                     </li>
