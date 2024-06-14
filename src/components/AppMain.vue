@@ -11,7 +11,12 @@ export default {
     },
 
     methods: {
-
+        getSearchedValue(searchedText) {
+            if(searchedText.trim() !== "" ) {
+                this.searchedValue = searchedText;
+            }
+            console.log(`searchedValue = ${this.searchedValue}`);
+        },
     }
 };
 </script>
@@ -20,7 +25,7 @@ export default {
     <main>
         <div class="container">
             <section class="search-bar">
-                <input type="text" name="movie-search-input" id="movie-search-input" placeholder="Cerca Film">
+                <input type="text" name="movie-search-input" id="movie-search-input" value="" placeholder="Cerca Film">
                 <button>
                     Cerca
                 </button>
