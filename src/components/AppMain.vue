@@ -89,6 +89,9 @@ export default {
                                 {{ `Titolo: ${movie.title}` }}
                             </li>
                             <li>
+                                <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" :alt="movie.title">
+                            </li>
+                            <li>
                                 {{ `Titolo Originale: ${movie.original_title}` }}
                             </li>
                             <li>
