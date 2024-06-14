@@ -14,6 +14,13 @@ Titolo
 Titolo Originale
 Lingua
 Voto
+    - creo 3 macro componenti per header, main e footer.
+    - all'interno del main aggiungo input text e un bottone
+    - credo un metodo per recuperare il valore all'interno dell'input text
+        - lego il metodo ad un evento connesso al bottone di ricerca (possibilmente mettere un secondo evento con un enter-key-up)
+        - prendo il valore dell'input e lo assegno ad un oggetto nei data
+    - creo un metodo per avviare una chiamata API che userà come filtro nella chiamata l'oggetto valore preso dall'input in modo che restituisca una lista di oggetti corrispondenti al valore stesso
+        - attraverso i dati restituiti dalla chiamata API aggiungo voci aggiuntive alla lista come titolo, lingua, voto, ecc...
 
 Milestone 2:
 Trasformiamo la stringa statica della lingua in una vera e propria bandiera della nazione corrispondente, gestendo il caso in cui non abbiamo la bandiera della nazione ritornata dall’API (le flag non ci sono in FontAwesome) [per ogni film].
