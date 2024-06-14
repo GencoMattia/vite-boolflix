@@ -9,7 +9,9 @@ export default {
 </script>
 
 <template>
-
+    <h1>
+        Io sono un header!
+    </h1>
 </template>
 
 <style scoped>

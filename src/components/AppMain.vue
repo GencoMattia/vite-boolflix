@@ -9,7 +9,9 @@ export default {
 </script>
 
 <template>
-
+    <h1>
+        Io sono un Main!
+    </h1>
 </template>
 
 <style scoped>
