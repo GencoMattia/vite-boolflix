@@ -2,8 +2,16 @@
 export default {
     data() {
         return {
-        
+            searchedMovieList: [
+
+            ],
+
+            searchedValue: "",
         };
+    },
+
+    methods: {
+
     }
 };
 </script>
