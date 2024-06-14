@@ -45,14 +45,30 @@ export default {
         <div class="container">
             <section class="search-bar">
                 <input type="text" name="movie-search-input" id="movie-search-input" v-model="searchedValue" placeholder="Cerca Film" @keyup.enter="getMovie">
-                <button @keyup.enter="getMovie">
+                <button @click="getMovie">
                     Cerca
                 </button>
             </section>
             <section class="searched-movie-wrapper">
                 <ul class="searched-movie-list">
                     <li v-for="movie in searchedMovieList">
-                        {{ movie.original_title }}
+                        <h2>
+                            {{ movie.original_title }}
+                        </h2>
+                        <ul>
+                            <li>
+                                {{ `Titolo: ${movie.title}` }}
+                            </li>
+                            <li>
+                                {{ `Titolo Originale: ${movie.original_title}` }}
+                            </li>
+                            <li>
+                                {{ `Lingua: ${movie.original_language}` }}
+                            </li>
+                            <li>
+                                {{ `Voto: ${movie.vote_average}` }}
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </section>
