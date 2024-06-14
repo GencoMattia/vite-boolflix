@@ -119,6 +119,9 @@ export default {
                                 {{ `Titolo: ${series.name}` }}
                             </li>
                             <li>
+                                <img :src="`https://image.tmdb.org/t/p/w342${series.poster_path}`" :alt="series.name">
+                            </li>
+                            <li>
                                 {{ `Titolo Originale: ${series.original_name}` }}
                             </li>
                             <li>
