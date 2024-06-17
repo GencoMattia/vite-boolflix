@@ -60,7 +60,12 @@ export default {
     </article> -->
 
     <article @mouseover="isHoveredTrue()" @mouseleave="isHoveredFalse()" class="product-card">
-        <img :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" :alt="item.title || item.name"> 
+        <img v-if="item.poster_path" 
+        :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" 
+        :alt="item.title || item.name"> 
+        <img v-else 
+        src="../assets/img/No-Image-Placeholder.svg.png" 
+        :alt="item.title || item.name"> 
         <div v-show="isHovered" class="product-info">
             <p class="product-title">
                 <span>Titolo:</span> {{ item.title || item.name }} 
@@ -83,17 +88,19 @@ export default {
 </template>
 
 <style scoped lang="scss">
+@use "../styles/partials/variables" as *;
+    @use "../styles/partials/mixins" as *;
+
     article {
         width: 342px;
         position: relative;
-
         
         .product-info {
             display: flex;
             flex-direction: column;
             justify-content: end;
             position: absolute;
-            bottom: 3px;
+            bottom: 0;
             top: 0;
             left: 0;
             right: 0;
@@ -106,5 +113,10 @@ export default {
                 opacity: 1;
             }
         }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
     }
 </style>
