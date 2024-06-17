@@ -18,8 +18,12 @@ export default {
             }
         },
 
-        getHoveredStatus() {
-            return !this.isHovered;
+        isHoveredTrue() {
+            this.isHovered = true;
+        },
+
+        isHoveredFalse() {
+            this.isHovered = false;
         }
     },
 
@@ -33,9 +37,9 @@ export default {
 </script>
 
 <template>
-    <article @mouseover="getHoveredStatus()" @mouseleave="getHoveredStatus()" class="product-card">
+    <article @mouseover="isHoveredTrue()" @mouseleave="isHoveredFalse()" class="product-card">
         <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" :alt="movie.title">
-        <div v-if="isHovered" class="product-info">
+        <div v-show="isHovered" class="product-info">
             <p class="product-title">
                 <span>Titolo:</span> {{ movie.title }}
             </p>
@@ -69,8 +73,10 @@ export default {
             position: absolute;
             bottom: 0;
             top: 0;
+            left: 0;
+            right: 0;
             color: white;
-            transition: all .3s;
+            // transition: all .3s;
             background-color: rgba($color: black, $alpha: 0.5);
         }
     }
