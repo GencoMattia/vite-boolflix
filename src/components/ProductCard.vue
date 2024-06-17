@@ -76,8 +76,13 @@ export default {
             left: 0;
             right: 0;
             color: white;
-            // transition: all .3s;
-            background-color: rgba($color: black, $alpha: 0.5);
+            opacity: 0;
+            transition: opacity .3s ease;
+            background-color: rgba($color: black, $alpha: 0.7);
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 </style>
