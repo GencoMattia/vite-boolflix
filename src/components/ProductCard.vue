@@ -28,7 +28,7 @@ export default {
     },
 
     props: {
-        movie: {
+        item: {
             type: Object,
             required: true,
         },
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-    <article @mouseover="isHoveredTrue()" @mouseleave="isHoveredFalse()" class="product-card">
+    <!-- <article @mouseover="isHoveredTrue()" @mouseleave="isHoveredFalse()" class="product-card">
         <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" :alt="movie.title">
         <div v-show="isHovered" class="product-info">
             <p class="product-title">
@@ -57,6 +57,28 @@ export default {
                 <span v-else :class="`fi fi-${movie.original_language.toLowerCase()}`"></span>
             </div>
         </div>
+    </article> -->
+
+    <article @mouseover="isHoveredTrue()" @mouseleave="isHoveredFalse()" class="product-card">
+        <img :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" :alt="item.title || item.name"> 
+        <div v-show="isHovered" class="product-info">
+            <p class="product-title">
+                <span>Titolo:</span> {{ item.title || item.name }} 
+            </p>
+            <p class="product-original-title">
+                <span>Titolo Originale:</span> {{ item.original_title || item.original_name }}
+            </p>
+            <p class="product-vote">
+                <span>Voto:</span> {{ getOneToFiveVote(item.vote_average) }}
+            </p>
+            <p class="product-overview">
+                <span>Overview:</span> {{ item.overview }}
+            </p>
+        <div class="product-language">
+            <span v-if="item.original_language === 'en'" :class="`fi fi-gb`"></span>
+            <span v-else :class="`fi fi-${item.original_language.toLowerCase()}`"></span>
+        </div>
+    </div>
     </article>
 </template>
 

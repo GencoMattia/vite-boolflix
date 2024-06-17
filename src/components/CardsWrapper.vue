@@ -39,7 +39,9 @@ export default {
 
 <template>
     <section class="searched-movie-wrapper">
-        <ProductCard v-for="(movie, index) in searchedMovieList" :key="movie.id" :movie="movie"/>
+        <!-- <ProductCard v-for="(movie, index) in searchedMovieList" :key="movie.id" :movie="movie"/> -->
+
+        <ProductCard v-for="(item, index) in [...searchedMovieList, ...searchedSeriesList]" :key="item.id" :item="item"/>
 
         <!-- <ul class="searched-series-list">
             <li>
