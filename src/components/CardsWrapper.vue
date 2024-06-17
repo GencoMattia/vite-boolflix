@@ -41,7 +41,7 @@ export default {
     <section class="searched-movie-wrapper">
         <ProductCard v-for="(movie, index) in searchedMovieList" :key="movie.id" :movie="movie"/>
 
-        <ul class="searched-series-list">
+        <!-- <ul class="searched-series-list">
             <li>
                 <h1>
                     Series
@@ -73,10 +73,17 @@ export default {
                     </li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
     </section>
 </template>
 
 <style scoped lang="scss">
+    @use "../styles/partials/variables" as *;
+    @use "../styles/partials/mixins" as *;
 
+    section {
+        @include flex-center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 </style>

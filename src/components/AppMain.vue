@@ -31,6 +31,11 @@ export default {
     </main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+    @use "../styles/partials/variables" as *;
+    @use "../styles/partials/mixins" as *;
 
+    main {
+        background-color: $appDark;
+    }
 </style>
