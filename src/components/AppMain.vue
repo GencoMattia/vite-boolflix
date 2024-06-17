@@ -90,7 +90,7 @@ export default {
                 </button>
             </section>
             <section class="searched-movie-wrapper">
-                <ProductCard :searchedMovieList="searchedMovieList" :searchedSeriesList="searchedSeriesList"/>
+                <ProductCard v-for="(movie, index) in searchedMovieList" :key="movie.id" :movie="movie"/>
 
                 <ul class="searched-movie-list">
                     <li>

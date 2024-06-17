@@ -16,16 +16,15 @@ export default {
                 console.warn("Il voto fornito non è un numero:", voteAverage);
                 return "Nessun voto disponibile";
             }
+        },
+
+        getHoveredStatus() {
+            return !this.isHovered;
         }
     },
 
     props: {
-        searchedMovieList: {
-            type: Object,
-            required: true,
-        },
-
-        searchedSeriesList: {
+        movie: {
             type: Object,
             required: true,
         },
@@ -34,9 +33,9 @@ export default {
 </script>
 
 <template>
-    <article v-for="(movie, index) in searchedMovieList" :key="movie.id" @mouseover="isHovered[index] = true" @mouseleave="isHovered[index] = false" class="product-card">
+    <article @mouseover="getHoveredStatus()" @mouseleave="getHoveredStatus()" class="product-card">
         <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" :alt="movie.title">
-        <div class="product-info">
+        <div v-if="isHovered" class="product-info">
             <p class="product-title">
                 <span>Titolo:</span> {{ movie.title }}
             </p>
