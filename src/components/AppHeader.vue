@@ -79,6 +79,7 @@ export default {
 
 <style scoped lang="scss">
 @use "../styles/partials/variables" as *;
+@use "../styles/partials/mixins" as *;
 
     .container {
         display: flex;
@@ -86,14 +87,35 @@ export default {
         justify-content: space-between;
         background-color: $appBlack;
         color: $appRed;
+        padding: 0 2rem;
 
         .logo h1 {
             font-family: 'Bebas Neue', cursive;
-            font-size: 5rem;
+            font-size: 4.7rem;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             letter-spacing: 0.1rem;
             margin: 0;
             text-transform: uppercase;
+        }
+
+        .search-bar {
+            width: 25%;
+            @include flex-center;
+
+            input {
+                width: 80%;
+                height: 30px;
+                border: none;
+                padding: 0 .5rem;
+                border-radius: .5rem 0 0 .5rem;
+            }
+            button {
+                height: 30px;
+                border: none;
+                background-color: white;
+                border-radius: 0 .5rem .5rem 0;
+                padding-right: .5rem;
+            }
         }
     }
 </style>
