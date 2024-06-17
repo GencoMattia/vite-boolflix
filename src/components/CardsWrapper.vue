@@ -83,6 +83,7 @@ export default {
 
     section {
         @include flex-center;
+        align-items: stretch;
         flex-wrap: wrap;
         gap: 1rem;
     }
