@@ -56,6 +56,11 @@ export default {
 <template>
     <header>
         <div class="container">
+            <section class="logo">
+                <h1>
+                    Boolflix
+                </h1>
+            </section>
             <section class="search-bar">
                 <input 
                 type="text" 
@@ -71,6 +76,10 @@ export default {
     </header>
 </template>
 
-<style scoped>
-
+<style scoped lang="scss">
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 </style>
