@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import "@fontsource/bebas-neue";
 import { store } from '../store.js';
 
 export default {
@@ -77,9 +78,22 @@ export default {
 </template>
 
 <style scoped lang="scss">
+@use "../styles/partials/variables" as *;
+
     .container {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        background-color: $appBlack;
+        color: $appRed;
+
+        .logo h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 5rem;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.1rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
     }
 </style>
