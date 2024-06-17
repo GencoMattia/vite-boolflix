@@ -1,8 +1,13 @@
 <script>
 import axios from 'axios';
 import "../../node_modules/flag-icons/css/flag-icons.min.css";
-// /node_modules/flag-icons/css/flag-icons.min.css
+import ProductCard from "./ProductCard.vue";
+
 export default {
+    components: {
+        ProductCard,
+    },
+
     data() {
         return {
             searchedMovieList: [
@@ -85,6 +90,8 @@ export default {
                 </button>
             </section>
             <section class="searched-movie-wrapper">
+                <ProductCard :searchedMovieList="searchedMovieList" :searchedSeriesList="searchedSeriesList"/>
+
                 <ul class="searched-movie-list">
                     <li>
                         <h1>
