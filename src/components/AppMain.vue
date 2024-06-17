@@ -37,5 +37,6 @@ export default {
 
     main {
         background-color: $appDark;
+        padding-top: 2rem;
     }
 </style>
