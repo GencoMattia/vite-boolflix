@@ -2,8 +2,21 @@
 export default {
     data() {
         return {
-        
+            isHovered: false,
         };
+    },
+
+    methods: {
+        getOneToFiveVote(voteAverage) {
+            const parsedVote = parseFloat(voteAverage, 10);
+            if (!isNaN(parsedVote)) {
+                const roundedVote = Math.floor(parsedVote / 2);
+                return roundedVote;
+            } else {
+                console.warn("Il voto fornito non è un numero:", voteAverage);
+                return "Nessun voto disponibile";
+            }
+        }
     },
 
     props: {
@@ -21,25 +34,45 @@ export default {
 </script>
 
 <template>
-    <article v-for="movie in searchedMovieList" :key="movie.id" class="product-card">
+    <article v-for="(movie, index) in searchedMovieList" :key="movie.id" @mouseover="isHovered[index] = true" @mouseleave="isHovered[index] = false" class="product-card">
         <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" :alt="movie.title">
         <div class="product-info">
             <p class="product-title">
-                Titolo
+                <span>Titolo:</span> {{ movie.title }}
             </p>
             <p class="product-original-title">
-                Titolo Originale
+                <span>Titolo Originale:</span> {{ movie.original_title }}
             </p>
             <p class="product-vote">
-                Voto
+                <span>Voto:</span> {{ getOneToFiveVote(movie.vote_average) }}
             </p>
             <p class="product-overview">
-                Descrizione
+                <span>Overview:</span> {{ movie.overview }}
             </p>
+            <div class="product-language">
+                <span v-if="movie.original_language === 'en'" :class="`fi fi-gb`"></span>
+                <span v-else :class="`fi fi-${movie.original_language.toLowerCase()}`"></span>
+            </div>
         </div>
     </article>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+    article {
+        width: 342px;
+        position: relative;
 
+        
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            color: white;
+            transition: all .3s;
+            background-color: rgba($color: black, $alpha: 0.5);
+        }
+    }
 </style>
