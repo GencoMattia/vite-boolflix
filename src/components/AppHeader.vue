@@ -2,8 +2,14 @@
 import axios from 'axios';
 import "@fontsource/bebas-neue";
 import { store } from '../store.js';
+import { FontAwesomeIcon } from "../assets/font-awesome";
+import { faMagnifyingGlass as faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 export default {
+    components: {
+        FontAwesomeIcon,
+    },
+
     data() {
         return {
             store,       
@@ -70,7 +76,7 @@ export default {
                 @keyup.enter="getMovie">
     
                 <button @click="getMovie">
-                    Cerca
+                    <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="search-icon"/>
                 </button>
             </section>
         </div>
@@ -116,6 +122,11 @@ export default {
                 background-color: white;
                 border-radius: 0 .5rem .5rem 0;
                 padding-right: .5rem;
+                color: lightgray;
+
+                &:hover {
+                    color: grey;
+                }
             }
         }
     }
