@@ -1,5 +1,13 @@
 <script>
+import { FontAwesomeIcon } from "../assets/font-awesome";
+import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+
 export default {
+    components: {
+        FontAwesomeIcon,
+    },
+
     data() {
         return {
             isHovered: false,
@@ -16,6 +24,10 @@ export default {
                 console.warn("Il voto fornito non è un numero:", voteAverage);
                 return "Nessun voto disponibile";
             }
+        },
+
+        getStarVote(max, item) {
+            return max - this.getOneToFiveVote(item.vote_average);
         },
 
         isHoveredTrue() {
@@ -37,28 +49,6 @@ export default {
 </script>
 
 <template>
-    <!-- <article @mouseover="isHoveredTrue()" @mouseleave="isHoveredFalse()" class="product-card">
-        <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" :alt="movie.title">
-        <div v-show="isHovered" class="product-info">
-            <p class="product-title">
-                <span>Titolo:</span> {{ movie.title }}
-            </p>
-            <p class="product-original-title">
-                <span>Titolo Originale:</span> {{ movie.original_title }}
-            </p>
-            <p class="product-vote">
-                <span>Voto:</span> {{ getOneToFiveVote(movie.vote_average) }}
-            </p>
-            <p class="product-overview">
-                <span>Overview:</span> {{ movie.overview }}
-            </p>
-            <div class="product-language">
-                <span v-if="movie.original_language === 'en'" :class="`fi fi-gb`"></span>
-                <span v-else :class="`fi fi-${movie.original_language.toLowerCase()}`"></span>
-            </div>
-        </div>
-    </article> -->
-
     <article @mouseover="isHoveredTrue()" @mouseleave="isHoveredFalse()" class="product-card">
         <img v-if="item.poster_path" 
         :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" 
@@ -74,7 +64,19 @@ export default {
                 <span>Titolo Originale:</span> {{ item.original_title || item.original_name }}
             </p>
             <p class="product-vote">
-                <span>Voto:</span> {{ getOneToFiveVote(item.vote_average) }}
+                <span>Voto:</span> 
+                <font-awesome-icon 
+                    v-for="n in getOneToFiveVote(item.vote_average)" 
+                    :key="n" 
+                    :icon="['fas', 'star']" 
+                    class="filled-star" 
+                />
+                <font-awesome-icon 
+                    v-for="n in getStarVote(5, item)" 
+                    :key="n + 5" 
+                    :icon="['far', 'star']" 
+                    class="empty-star" 
+                />
             </p>
             <p class="product-overview">
                 <span>Overview:</span> {{ item.overview }}
