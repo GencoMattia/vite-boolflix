@@ -114,6 +114,18 @@ export default {
             &:hover {
                 opacity: 1;
             }
+
+            span {
+                font-weight: bolder;
+            }
+
+            .filled-star {
+                color: gold; // Colore per le stelle piene
+            }
+
+            .empty-star {
+                color: lightgray; // Colore per le stelle vuote
+            }
         }
     }
 
