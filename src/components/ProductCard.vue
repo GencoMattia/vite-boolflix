@@ -106,6 +106,7 @@ export default {
             top: 0;
             left: 0;
             right: 0;
+            padding: 1rem;
             color: white;
             opacity: 0;
             transition: opacity .3s ease;
