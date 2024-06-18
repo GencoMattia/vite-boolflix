@@ -81,11 +81,11 @@ export default {
             <p class="product-overview">
                 <span>Overview:</span> {{ item.overview }}
             </p>
-        <div class="product-language">
-            <span v-if="item.original_language === 'en'" :class="`fi fi-gb`"></span>
-            <span v-else :class="`fi fi-${item.original_language.toLowerCase()}`"></span>
+            <div class="product-language">
+                <span v-if="item.original_language === 'en'" :class="`fi fi-gb`"></span>
+                <span v-else :class="`fi fi-${item.original_language.toLowerCase()}`"></span>
+            </div>
         </div>
-    </div>
     </article>
 </template>
 
@@ -125,6 +125,13 @@ export default {
 
             .empty-star {
                 color: lightgray; // Colore per le stelle vuote
+            }
+
+            .product-language {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                font-size: 2rem;
             }
         }
     }
